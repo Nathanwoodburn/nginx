@@ -22,10 +22,10 @@ jobs:
         run : |          
           echo "${{ secrets.DOCKERGIT_TOKEN }}" | docker login git.woodburn.au -u nathanwoodburn --password-stdin
           tag_num=${GITHUB_RUN_NUMBER}
-          docker build -t nginx:$tag .
-          docker tag nginx:$tag git.woodburn.au/nathanwoodburn/nginx:$tag_num
+          docker build -t nginx:latest .
+          docker tag nginx:latest git.woodburn.au/nathanwoodburn/nginx:$tag_num
           docker push git.woodburn.au/nathanwoodburn/nginx:$tag_num
-          docker tag nginx:$tag git.woodburn.au/nathanwoodburn/nginx:latest
+          docker tag nginx:latest git.woodburn.au/nathanwoodburn/nginx:latest
           docker push git.woodburn.au/nathanwoodburn/nginx:latest
 
   Build Container ARM:
@@ -46,8 +46,8 @@ jobs:
         run : |          
           echo "${{ secrets.DOCKERGIT_TOKEN }}" | docker login git.woodburn.au -u nathanwoodburn --password-stdin
           tag_num=${GITHUB_RUN_NUMBER}
-          docker build -t nginx:$tag .
-          docker tag nginx:$tag git.woodburn.au/nathanwoodburn/nginx:$tag_num-arm
+          docker build -t nginx:latest .
+          docker tag nginx:latest git.woodburn.au/nathanwoodburn/nginx:$tag_num-arm
           docker push git.woodburn.au/nathanwoodburn/nginx:$tag_num-arm
-          docker tag nginx:$tag git.woodburn.au/nathanwoodburn/nginx:latest-arm
+          docker tag nginx:latest git.woodburn.au/nathanwoodburn/nginx:latest-arm
           docker push git.woodburn.au/nathanwoodburn/nginx:latest-arm
